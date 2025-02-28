@@ -1,24 +1,14 @@
-# README
+# Action Controller in Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- Action Controller is the C in the MVC (Model-View-Controller) pattern.
 
-Things you may want to cover:
+- It processes incoming requests and generates appropriate responses.
 
-* Ruby version
+## In a typical RESTful application:
 
-* System dependencies
+- The controller receives the request.
 
-* Configuration
+- It interacts with the model to fetch or save data.
 
-* Database creation
+- It passes data to the view for rendering.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
