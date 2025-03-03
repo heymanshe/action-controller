@@ -1,0 +1,19 @@
+<h1>Create a User</h1>
+<%= form_with url: users_path, method: :post do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :phone %>
+  <%= f.text_field :phone %>
+
+  <fieldset>
+    <legend>Address</legend>
+    <%= f.label :postcode, "Postcode" %>
+    <%= f.text_field :address, :postcode %>
+
+    <%= f.label :city, "City" %>
+    <%= f.text_field :address, :city %>
+  </fieldset>
+
+  <%= f.submit "Create User" %>
+<% end %>
