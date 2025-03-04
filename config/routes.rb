@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   # end
   resources :clients, only: [ :index, :show ]
 
+  resources :lyrics, only: [ :show ]
   root "admins#index"
   resources :admins, only: [ :index ]
   resources :users, only: [ :index, :create ]

@@ -8,3 +8,4 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 Admin.create(name: "admin", password_digest: "helloworld")
+Song.create(title: "Imagine", lyrics: "Imagine there's no heaven\nIt's easy if you try\nNo hell below us\nAbove us, only sky", num_beats: 2)
