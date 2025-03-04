@@ -1,0 +1,17 @@
+<h1>Live Lyrics Stream</h1>
+<div id="lyrics"></div>
+
+<script>
+  let source = new EventSource("/lyrics/1"); 
+  let lyricsDiv = document.getElementById("lyrics");
+
+  source.onmessage = function(event) {
+    let line = document.createElement("p");
+    line.textContent = event.data;
+    lyricsDiv.appendChild(line);
+  };
+
+  source.onerror = function() {
+    source.close();
+  };
+</script>
