@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "posts/index"
   get "users/index"
   get "users/create"
   get "clients/new"
@@ -14,7 +15,11 @@ Rails.application.routes.draw do
 
   resources :clients, only: [ :create, :new ]
 
+  root "admins#index"
+  resources :admins, only: [ :index ]
   resources :users, only: [ :index, :create ]
+
+  resources :posts, only: [ :index ]
   # Defines the root path route ("/")
   # root "posts#index"
 end

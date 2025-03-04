@@ -131,5 +131,70 @@ GET /users?ids[]=1&ids[]=2&ids[]=3
 
 - Values such as `[nil]` or `[nil, nil, ...]` in params are replaced with `[]` for security reasons.
 
+## 3.2 Composite Key Parameters
 
+- Composite key parameters contain multiple values separated by a delimiter (e.g., an underscore).
+
+- The `extract_value` method is used to extract individual values from composite keys.
+
+```ruby
+class BooksController < ApplicationController
+  def show
+    id = params.extract_value(:id) # Extracts composite key values
+    @book = Book.find(id)
+  end
+end
+```
+
+- Given the route:
+
+```ruby
+get "/books/:id", to: "books#show"
+```
+
+- A request to `/books/4_2` will extract `id = ["4", "2"]` and pass it to `Book.find`.
+
+- `extract_value` can be used for any delimited parameters.
+
+## 3.3 JSON Parameters
+
+- Rails automatically parses JSON request parameters if the `content-type` header is set to `application/json`.
+
+- Example JSON request body:
+
+```ruby
+{ "user": { "name": "acme", "address": "123 Carrot Street" } }
+```
+
+- The controller will receive:
+
+```ruby
+{ "user" => { "name" => "acme", "address" => "123 Carrot Street" } }
+```
+
+### 3.3.1 Configuring Wrap Parameters
+
+- Wrap Parameters automatically adds the controller name as a root key in JSON requests.
+
+- Example: Sending this JSON without a root user key:
+
+```ruby
+{ "name": "acme", "address": "123 Carrot Street" }
+```
+
+- If sent to `UsersController`, Rails wraps it as:
+
+```ruby
+{ name: "acme", address: "123 Carrot Street", user: { name: "acme", address: "123 Carrot Street" } }
+```
+
+- By default, `wrap_parameters` is enabled.
+
+- To disable:
+
+```ruby
+config.action_controller.wrap_parameters_by_default = false
+```
+
+- 22222You can also customize the key name or specific parameters to wrap by referring to the API documentation.
 
