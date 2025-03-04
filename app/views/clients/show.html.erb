@@ -1,0 +1,12 @@
+<h1><%= @client.name %></h1>
+<%# <p>Address: <%= @client.address %></p>
+<%# <p>Email: <%= @client.email %></p> 
+<%# <%= link_to "Download PDF", download_pdf_client_path(@client), target: "_blank" %> 
+
+<p>
+  <%= link_to "Download PDF", download_pdf_client_path(@client), method: :get %>
+</p>
+<%= link_to "Back", clients_path %>
+
+
+

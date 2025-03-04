@@ -1,0 +1,15 @@
+<h1>Clients</h1>
+<ul>
+  <% @clients.each do |client| %>
+    <%# <li>
+      <%# <%= link_to client.name, client_path(client) %> <%#| %>
+      <%# <%= link_to "Download PDF", download_pdf_client_path(client), target: "_blank" %> 
+    <%# </li> %>
+    <li>
+      <%= link_to client.name, client %> |
+      <%= link_to "Download PDF", download_pdf_client_path(client), method: :get %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New Client", new_client_path %>
