@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
- get "/users/:id", to: "users#show"
+  #  get "/users/:id", to: "users#show"
 
+  get "/users/:id", to: "users#show", as: "user"
   get "clients/new"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
