@@ -1,0 +1,11 @@
+<h1>Shopping Basket</h1>
+<p>Total Price: <%= @basket.total_price %></p>
+
+<%= form_with model: @basket, url: basket_path, method: :patch do |f| %>
+  <%= f.label :total_price, "Update Price" %>
+  <%= f.number_field :total_price %>
+  <%= f.submit "Update" %>
+<% end %>
+
+<%= button_to "Clear Basket", basket_path, method: :delete, data: { confirm: "Are you sure?" } %>
+
