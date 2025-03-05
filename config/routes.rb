@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get "posts/index"
-  get "users/index"
-  get "users/create"
+ get "/users/:id", to: "users#show"
+
   get "clients/new"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

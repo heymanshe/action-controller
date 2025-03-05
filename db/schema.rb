@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_04_081317) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_05_055132) do
   create_table "admins", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
@@ -24,11 +24,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_04_081317) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "phone"
+  end
+
+  create_table "songs", force: :cascade do |t|
+    t.string "title"
+    t.text "lyrics"
+    t.integer "num_beats"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "name"
     t.string "email"
-    t.string "auth_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
