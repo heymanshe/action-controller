@@ -1,0 +1,17 @@
+<h1>Live Streaming Example</h1>
+
+<script>
+  const eventSource = new EventSource('/streams/live');
+
+  eventSource.onmessage = function(event) {
+    console.log(event.data);
+    document.getElementById("messages").innerHTML += `<p>${event.data}</p>`;
+  };
+
+  eventSource.onerror = function(event) {
+    console.error("EventSource failed.", event);
+    eventSource.close();
+  };
+</script>
+
+<div id="messages"></div>
