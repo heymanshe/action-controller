@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :photos
   get "baskets/show"
   get "baskets/update"
   get "baskets/destroy"
