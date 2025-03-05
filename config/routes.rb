@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get "baskets/show"
+  get "baskets/update"
+  get "baskets/destroy"
+  get "products/index"
+  get "products/show"
+  get "brands/index"
+  get "brands/show"
   #  get "/users/:id", to: "users#show"
 
   get "/users/:id", to: "users#show", as: "user"
@@ -28,4 +35,13 @@ Rails.application.routes.draw do
   resources :posts, only: [ :index ]
   # Defines the root path route ("/")
   # root "posts#index"
+
+
+  resources :brands, only: [ :index, :show ] do
+    resources :products, only: [ :index, :show ]
+  end
+
+  resource :basket, only: [ :show, :update, :destroy ]
+
+  resolve("Basket") { route_for(:basket) }
 end

@@ -1,0 +1,6 @@
+<h1>Products for <%= @brand.name %></h1>
+<ul>
+  <% @products.each do |product| %>
+    <li><%= link_to product.name, brand_product_path(@brand, product) %></li>
+  <% end %>
+</ul>
